@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Our Little Story</title>
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tai+Tham&family=Noto+Sans+Lepcha&family=Noto+Sans+Mongolian&family=Noto+Sans+Inscriptional+Parthian&display=swap" rel="stylesheet">
+<style>
+:root{--b1:#8fd0ff;--b2:#cdeaff;--b3:#2f7fc4;--pink:#e58aab;--ink:#2b4a66}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{font-family:'Mali','Noto Sans Tai Tham','Noto Sans Lepcha','Noto Sans Mongolian','Noto Sans Inscriptional Parthian','Sarabun',sans-serif;color:var(--ink);overflow:hidden;
+background:radial-gradient(ellipse 140px 40px at 18% 9%,#fffc,#fff0),radial-gradient(ellipse 180px 50px at 85% 22%,#fffc,#fff0),radial-gradient(ellipse 160px 45px at 12% 78%,#fff9,#fff0),linear-gradient(180deg,var(--b1),var(--b2) 60%,#f3fbff)}
+body::before,body::after{content:"";position:fixed;top:0;bottom:0;width:12px;z-index:0;opacity:.35;background:repeating-linear-gradient(180deg,#8fcfa8 0 80px,#6fb88b 80px 84px)}
+body::before{left:6px}body::after{right:6px}
+.app{position:relative;z-index:1;height:100dvh;display:flex;flex-direction:column;align-items:center;padding:calc(env(safe-area-inset-top,0px) + 10px) 16px calc(env(safe-area-inset-bottom,0px) + 12px)}
+.count{font-size:.85rem;letter-spacing:.15em;color:var(--b3);padding:6px 0}
+.wrap{position:relative;flex:1;min-height:0;width:min(640px,100%);perspective:1200px}
+.wrap.hc{margin-top:96px}
+.char{--rt:4deg;position:absolute;right:14px;bottom:calc(100% - 16px);width:clamp(100px,28vw,160px);height:auto;border-radius:20px;border:3px solid #fff;box-shadow:0 8px 20px rgba(47,127,196,.3);z-index:2;cursor:pointer;transform:rotate(var(--rt))}
+.char.l{left:14px;right:auto;--rt:-4deg}
+.char.pop{animation:pop .8s cubic-bezier(.3,1.6,.5,1) both,bob 3.2s ease-in-out .8s infinite}
+@keyframes pop{from{transform:scale(0) rotate(-25deg)}to{transform:scale(1) rotate(var(--rt))}}
+@keyframes bob{50%{transform:translateY(-7px) rotate(calc(var(--rt) * -.6))}}
+.stk{display:block;width:min(210px,62%);height:auto;margin:8px auto 22px;border-radius:22px;border:4px solid #fff;box-shadow:0 8px 20px rgba(47,127,196,.25);cursor:pointer}
+.stk.r{transform:scale(.4) rotate(-14deg);transition:opacity .7s,transform .8s cubic-bezier(.3,1.6,.5,1)}
+.stk.r.show{transform:rotate(var(--rt,-3deg))}
+.jump{animation:jump .7s ease}
+@keyframes jump{40%{transform:translateY(-24px) rotate(12deg) scale(1.12)}}
+.no{transition:transform .28s cubic-bezier(.3,1.5,.5,1)}.yes{transition:transform .3s}
+.taunt{flex-basis:100%;min-height:1.6em;text-align:center;color:var(--pink);font-weight:600}
+.card{height:100%;overflow-y:auto;background:rgba(255,250,240,.92);backdrop-filter:blur(3px);border:3px solid #fff;border-radius:28px;box-shadow:0 14px 40px rgba(47,127,196,.25);padding:28px 24px 40px;transition:opacity .35s,transform .35s}
+.card.out{opacity:0;transform:translateX(-36px) rotateY(-14deg)}
+.card.in{animation:in .6s ease both}
+@keyframes in{from{opacity:0;transform:translateX(40px) rotateY(14deg)}}
+.top{font-size:.9rem;color:var(--b3)}
+.eb{font-size:.8rem;font-weight:600;letter-spacing:.08em;color:var(--pink);margin:6px 0}
+h1{font-size:clamp(1.7rem,6vw,2.3rem);line-height:1.25;color:var(--b3);margin-bottom:20px}
+.q h1{font-size:clamp(2.1rem,8vw,3rem)}
+.r{opacity:0;transform:translateY(14px);transition:opacity .9s ease,transform .9s ease}
+.r.show{opacity:1;transform:none}
+p.r{line-height:1.95;margin-bottom:14px}
+p.em{font-weight:600;font-size:1.15em;color:var(--b3)}
+p.sig{text-align:center;font-size:1.2em}
+.photo{position:relative;width:min(210px,70%);min-height:250px;margin:4px auto 24px;background:#fff;padding:10px 10px 34px;box-shadow:0 8px 20px rgba(47,127,196,.2)}
+.photo.r{transform:rotate(-3deg) scale(.92)}.photo.r.show{transform:rotate(-3deg)}
+.photo::before{content:"";position:absolute;top:-10px;left:50%;width:76px;height:20px;margin-left:-38px;background:rgba(255,201,220,.85);transform:rotate(4deg)}
+.photo img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:var(--b2)}
+.nav{width:min(640px,100%);display:flex;justify-content:space-between;padding-top:12px}
+.btn{border:0;border-radius:999px;padding:12px 22px;font:inherit;font-weight:600;background:var(--b3);color:#fff;box-shadow:0 6px 16px rgba(47,127,196,.3);cursor:pointer;transition:transform .15s}
+.btn:active{transform:scale(.92)}.btn:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+.btn.ghost{background:#fff;color:var(--b3)}
+.ans{display:none;gap:10px;flex-wrap:wrap;margin-top:22px}.ans.show{display:flex;animation:in .6s ease both}
+.res{margin-top:22px;padding:18px;border-radius:20px;background:#eaf6ff;text-align:center;line-height:1.9}
+.res[hidden]{display:none}.res .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.fl,.bs{position:fixed;pointer-events:none}
+.fl{bottom:-30px;z-index:0;opacity:.55;animation:fl linear forwards}
+@keyframes fl{to{transform:translateY(-115vh) rotate(40deg);opacity:0}}
+.bs{left:50%;top:50%;z-index:9;animation:bs 1.4s ease-out forwards}
+@keyframes bs{to{transform:translate(var(--x),var(--y)) scale(1.4);opacity:0}}
+@media (prefers-reduced-motion:reduce){.fl{display:none}.r{transition:none}.card.in,.ans.show{animation:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="count" id="n"></div>
+  <div class="wrap" id="wrap"><img class="char" id="char" alt="" hidden><div class="card" id="card"></div></div>
+  <div class="nav"><button class="btn ghost" id="back">← ย้อนกลับ</button><button class="btn" id="next"></button></div>
+</div>
+<script>
+/* ===== CONFIG: แก้รูปและข้อความได้ที่นี่ =====
+   photo = รูปของลูกค้า (หน้า 1) ; char = รูปตัวละครของแต่ละหน้า (เว้นว่าง "" = ไม่แสดง) */
+const CONFIG={
+  photo:"images/photo.jpg",
+  pages:[
+    {top:"Our Little Story ᢉ𐭩",eb:"01 · THE BEGINNING 𙚗⋆°.⋆",h:"It All Started With You",char:"images/2.gif",cs:"",mid:{src:"images/4.gif",after:1},btn:"อ่านเรื่องต่อไป →",p:[
+      "พี่รู้ไหมคะว่าหนูยังจำวันแรกๆ ที่เราได้คุยกันได้อยู่เลยค่ะ ☺️💗",
+      "รวมถึงจระเข้ตัวหนึ่งที่พี่ส่งมาให้หนู แล้วพี่ก็เป็นคนตั้งชื่อให้ว่า “จัสมิน” 🐊💌",
+      "จนถึงวันนี้หนูก็ยังเก็บรูปจระเข้ตัวนั้นไว้อยู่เลยค่ะ อาจเป็นแค่เรื่องเล็กๆ สำหรับใครหลายคน แต่สำหรับหนู มันเป็นหนึ่งในความทรงจำเล็กๆ ที่ทำให้หนูย้อนกลับไปนึกถึงจุดเริ่มต้นของเราได้เสมอ ᰔᩚ",
+      "ไม่เคยคิดเลยนะคะว่าคนที่เริ่มต้นจากการพูดคุยกันธรรมดาๆ จะกลายมาเป็นคนที่มีความหมายกับหนูได้มากขนาดนี้ 🧸ྀི♡"]},
+    {eb:"OUR MEMORIES ⋆｡˚❀",h:"Somewhere Along the Way ᢉ𐭩",char:"images/1.gif",cs:"l",mid:{src:"images/8.gif",after:1},btn:"ยังมีอีกเรื่องที่อยากเล่า →",p:[
+      "ตลอดเวลาที่ผ่านมา เราคุยกันตั้งหลายเรื่องเลยเนอะ 💌💕",
+      "ทั้งเรื่องจริงจัง เรื่องไร้สาระ เรื่องในแต่ละวัน รวมถึงเรื่องเล็กๆ ที่บางทีหนูเองก็ไม่รู้เหมือนกันว่าทำไมถึงอยากเล่าให้พี่ฟังไปหมดเลย",
+      "สิ่งหนึ่งที่หนูรู้สึกมาตลอดคือ หนูมีความสุขที่ได้คุยกับพี่ค่ะ ต่อให้บางวันหนูไม่ได้อยากคุยกับใครเป็นพิเศษ หนูก็ยังอยากคุยกับพี่อยู่ดี 🫶🏻💗",
+      "พอเวลาผ่านไป หนูก็ยิ่งรู้สึกว่าการมีพี่อยู่ในชีวิตประจำวันของหนูเป็นเรื่องที่น่ารักมากๆ เลยนะคะ ˚ ༘♡ ⋆｡˚❀"]},
+    {eb:"GROWING TOGETHER 🐾",h:"Even on the Not-So-Easy Days",char:"images/7.gif",cs:"",mid:{src:"images/6.gif",after:0},btn:"มีอีกเรื่องที่อยากบอกพี่ →",p:[
+      "เราเองก็มีทั้งวันที่เข้าใจกันดีและวันที่ไม่เข้าใจกัน มีทะเลาะกันบ้าง มีเรื่องที่ต้องปรับความเข้าใจกันบ้าง แต่พอมองย้อนกลับไป หนูกลับรู้สึกว่าเรื่องราวเหล่านั้นทำให้เราได้เรียนรู้จักกันมากขึ้นจริงๆ ค่ะ 💗",
+      "หนูรู้ว่าหนูยังมีอีกหลายอย่างที่ต้องเรียนรู้เกี่ยวกับพี่ และพี่เองก็คงยังมีอีกหลายมุมที่หนูยังไม่รู้จัก แต่หนูไม่ได้คาดหวังว่าเราจะต้องเข้าใจกันทุกเรื่องตั้งแต่แรกนะคะ",
+      "หนูแค่อยากให้เราได้ค่อยๆ เรียนรู้ ทำความเข้าใจ และเติบโตไปด้วยกันทีละนิด ถ้าเรายังอยากมีกันอยู่ในชีวิต หนูก็อยากตั้งใจทำความสัมพันธ์นี้ให้ดีค่ะ 🫶🏻💞"]},
+    {eb:"MY LITTLE CONFESSION 💌",h:"Why You, Out of Everyone? 😻",char:"images/3.gif",cs:"l",mid:{src:"images/5.gif",after:1},btn:"อ่านข้อความสุดท้ายกันนะ 💌",p:[
+      "หนูชอบความตั้งใจของพี่ค่ะ ชอบเวลาที่เห็นพี่ทุ่มเทกับงานและรับผิดชอบสิ่งต่างๆ ในชีวิต หนูชื่นชมหลายๆ อย่างในตัวพี่ และยิ่งได้รู้จักพี่มากขึ้น หนูก็ยิ่งรู้สึกดีกับพี่มากขึ้นเรื่อยๆ 💖",
+      "เวลาที่พี่เหนื่อย เครียด หรือไม่สบาย หนูก็เป็นห่วงเสมอ อยากให้พี่ได้พัก อยากให้พี่สบายขึ้น และอยากเป็นคนหนึ่งที่พี่สามารถพูดคุยด้วยได้ในวันที่เหนื่อยล้า 🧸ྀི🤍",
+      "หนูอาจจะยังไม่ได้รู้จักพี่ทั้งหมด ไม่ได้รู้ทุกเรื่องที่พี่เคยผ่านมาหรือทุกความรู้สึกของพี่ แต่หนูอยากทำความรู้จักพี่ให้มากกว่านี้ อยากเข้าใจตัวตนของพี่จริงๆ และอยากดูแลความสัมพันธ์ของเราให้ดีที่สุดเท่าที่หนูจะทำได้ค่ะ ᰔᩚ"]},
+    {q:1,em:4,eb:"THE QUESTION 💘",h:"Can We Be Something More ?",char:"images/4.gif",cs:"",mid:{src:"images/2.gif",after:4},btn:"",p:[
+      "จริงๆ แล้วหนูมีเรื่องอยากบอกพี่อีกเรื่องหนึ่งค่ะ ☺️💌",
+      "ตลอด 22 ปีที่ผ่านมา หนูไม่เคยมีแฟนเลย เพราะหนูอยากให้การมีใครสักคนเป็นความสัมพันธ์ที่หนูตั้งใจเลือกจริงๆ หนูอยากรู้จักเขาให้มากขึ้น อยากเรียนรู้ทั้งด้านที่น่ารักและด้านที่ยังต้องทำความเข้าใจ อยากมีใครสักคนที่เราได้แบ่งปันเรื่องราวในชีวิตให้กัน และค่อยๆ สร้างวันข้างหน้าไปด้วยกัน 💗",
+      "แล้วพอเป็นพี่ หนูก็รู้สึกว่าตัวเองอยากลองทำสิ่งเหล่านั้นกับพี่ค่ะ หนูไม่รู้ว่าในอนาคตเราจะเจออะไรบ้าง แต่หนูรู้ว่าความรู้สึกที่มีให้พี่ในวันนี้เป็นความรู้สึกที่หนูจริงจังมากๆ และยิ่งเวลาผ่านไป หนูก็ยิ่งชอบพี่มากขึ้นเรื่อยๆ 💞",
+      "หนูเลยอยากลองเปิดใจให้กันมากกว่าที่เป็นอยู่ตอนนี้ อยากลองพัฒนาความสัมพันธ์ของเราให้ชัดเจนขึ้น และลองเรียนรู้กันในฐานะแฟนดูค่ะ 🫶🏻🤍",
+      "พี่จะลองเปิดใจคบกับหนูเป็นแฟนได้ไหมคะ? 🧸ྀི💖",
+      "หนูอยากตั้งใจรักพี่ อยากเรียนรู้จักพี่ในทุกๆ วัน และอยากมีพี่อยู่ในเรื่องราวบทต่อๆ ไปของหนูนะคะ ᢉ𐭩",
+      "(づ˶•༝•˶)づ♡"]}
+  ],
+  yes:"ขอบคุณที่ตอบตกลงนะคะ 💗 หนูดีใจมากๆ เลย และจะตั้งใจดูแลความสัมพันธ์ของเราให้ดีที่สุดนะคะ 🧸",
+  yesImg:"images/1.gif",
+  taunt:["จับให้ได้สิ 😝","ช้าไปนิดนะคะ 💨","อุ๊ย พลาดอีกแล้ว 🤭","ปุ่มนี้ขี้อายค่ะ 🙈","ลองใหม่อีกทีสิ 🐼","เหนื่อยยัง? กดอีกปุ่มก็ได้นะ 💗"]
+};
+/* ===== จบ CONFIG ===== */
+
+const $=s=>document.querySelector(s);
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+let cur=0,busy=false;
+
+function render(){
+  const P=CONFIG.pages[cur],card=$('#card'),ch=$('#char');
+  card.replaceChildren();card.scrollTop=0;card.classList.toggle('q',!!P.q);
+  ch.hidden=!P.char;if(P.char){ch.src=P.char;ch.className='char'+(P.cs?' '+P.cs:'');void ch.offsetWidth;ch.classList.add('pop')}$('#wrap').classList.toggle('hc',!!P.char);
+  if(P.top)card.append(el('div','top',P.top));
+  card.append(el('div','eb',P.eb),el('h1','',P.h));
+  const items=[];
+  if(cur===0){
+    const f=el('div','photo r'),i=new Image();i.alt='';i.src=CONFIG.photo;i.onerror=()=>i.remove();
+    f.append(i);card.append(f);items.push(f);
+  }
+  P.p.forEach((t,k)=>{
+    const p=el('p','r'+(k===P.em?' em':'')+(P.q&&k===P.p.length-1?' sig':''),t);
+    card.append(p);items.push(p);
+    if(P.mid&&P.mid.after===k){const g=el('img','stk r');g.src=P.mid.src;g.alt='';g.style.setProperty('--rt',(cur%2?3:-3)+'deg');g.onclick=()=>wiggle(g);card.append(g);items.push(g)}
+  });
+  let ans;
+  if(P.q){ans=buildAnswers();card.append(ans.a,ans.r)}
+  const last=items[items.length-1];
+  const io=new IntersectionObserver(es=>{
+    es.filter(e=>e.isIntersecting).forEach((e,k)=>{
+      io.unobserve(e.target);
+      setTimeout(()=>{e.target.classList.add('show');if(P.q&&e.target===last)ans.a.classList.add('show')},300+k*450);
+    });
+  },{root:card,threshold:.15});
+  items.forEach(x=>io.observe(x));
+  $('#n').textContent=String(cur+1).padStart(2,'0')+' / '+String(CONFIG.pages.length).padStart(2,'0');
+  $('#back').style.visibility=cur?'visible':'hidden';
+  const nx=$('#next');nx.style.visibility=P.btn?'visible':'hidden';nx.textContent=P.btn;
+}
+
+function wiggle(x){x.classList.remove('jump');void x.offsetWidth;x.classList.add('jump');setTimeout(()=>x.classList.remove('jump'),750)}
+$('#char').onclick=e=>wiggle(e.target);
+function buildAnswers(){
+  const a=el('div','ans'),r=el('div','res'),t=el('p','taunt');r.hidden=true;
+  const yes=el('button','btn yes','ตกลงเป็นแฟนกันนะ 💗'),no=el('button','btn ghost no','ขอเวลาคิดอีกนิดนะ 🤍');
+  let tx=0,ty=0,n=0,last=0;
+  const dodge=(px,py)=>{
+    const now=Date.now();if(now-last<160)return;last=now;
+    const c=$('#card').getBoundingClientRect(),w=no.offsetWidth,h=no.offsetHeight,y=yes.getBoundingClientRect();
+    const bx=no.getBoundingClientRect().left-tx,by=no.getBoundingClientRect().top-ty;
+    const x0=Math.max(c.left,0)+12,x1=Math.min(c.right,innerWidth)-w-12,y0=Math.max(c.top,0)+12,y1=Math.min(c.bottom,innerHeight)-h-12;
+    let best=null,bd=-1;
+    for(let i=0;i<10;i++){
+      const L=x0+Math.random()*Math.max(0,x1-x0),T=y0+Math.random()*Math.max(0,y1-y0);
+      const hit=L<y.right+8&&L+w>y.left-8&&T<y.bottom+8&&T+h>y.top-8;
+      const d=Math.hypot(L+w/2-(px??L),T+h/2-(py??T));
+      if(!hit&&d>bd){bd=d;best=[L,T]}
+    }
+    if(!best)return;
+    tx=best[0]-bx;ty=best[1]-by;n++;
+    no.style.transform=`translate(${tx}px,${ty}px) rotate(${(Math.random()-.5)*16}deg) scale(${Math.max(.7,1-n*.04)})`;
+    yes.style.transform=`scale(${Math.min(1.3,1+n*.05)})`;
+    t.textContent=CONFIG.taunt[n%CONFIG.taunt.length];
+  };
+  const run=e=>{e.preventDefault();const p=e.touches?e.touches[0]:e;dodge(p.clientX,p.clientY)};
+  no.addEventListener('pointerenter',run);no.addEventListener('touchstart',run,{passive:false});
+  no.addEventListener('pointerdown',run);no.addEventListener('click',run);no.addEventListener('focus',()=>{no.blur();dodge()});
+  $('#card').addEventListener('pointermove',e=>{const b=no.getBoundingClientRect();
+    if(e.clientX>b.left-50&&e.clientX<b.right+50&&e.clientY>b.top-50&&e.clientY<b.bottom+50)dodge(e.clientX,e.clientY)});
+  yes.onclick=()=>{
+    burst();a.classList.remove('show');
+    const g=new Image();g.src=CONFIG.yesImg;g.className='stk';g.style.marginTop='0';g.onclick=()=>wiggle(g);
+    const rr=el('button','btn ghost','กลับไปอ่านข้อความ');rr.onclick=()=>go(0);
+    const row=el('div','row');row.append(rr);
+    r.replaceChildren(g,el('p','',CONFIG.yes),row);r.hidden=false;r.scrollIntoView({behavior:'smooth',block:'center'});
+  };
+  a.append(yes,no,t);return{a,r};
+}
+
+function go(n){
+  if(busy)return;busy=true;
+  const c=$('#card');c.classList.add('out');
+  setTimeout(()=>{cur=n;render();c.classList.remove('out');c.classList.add('in');
+    setTimeout(()=>{c.classList.remove('in');busy=false},650)},350);
+}
+$('#next').onclick=()=>go(Math.min(cur+1,CONFIG.pages.length-1));
+$('#back').onclick=()=>go(Math.max(cur-1,0));
+
+function burst(){
+  for(let i=0;i<46;i++){
+    const e=el('span','bs',['💗','✨','🌸','💖','⭐'][i%5]),g=Math.random()*6.28,d=100+Math.random()*220;
+    e.style.cssText=`--x:${Math.cos(g)*d}px;--y:${Math.sin(g)*d}px;font-size:${14+Math.random()*18}px`;
+    document.body.append(e);setTimeout(()=>e.remove(),1500);
+  }
+}
+setInterval(()=>{
+  const e=el('span','fl',['💗','🌸','✨','🤍'][Math.floor(Math.random()*4)]);
+  e.style.left=Math.random()*100+'vw';e.style.fontSize=(14+Math.random()*14)+'px';
+  e.style.animationDuration=(9+Math.random()*6)+'s';
+  document.body.append(e);setTimeout(()=>e.remove(),16000);
+},1800);
+render();
+</script>
+</body>
+</html>
